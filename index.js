@@ -32,16 +32,19 @@ if (!clientKey) {
 }
 
 var api = new ParseServer({
-  databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
+  // databaseURI: databaseUri || 'mongodb://social:social@ds125146.mlab.com:25146/social_journalism',
+  databaseURI: databaseUri || 'mongodb://soch:soch123@ec2-34-229-101-24.compute-1.amazonaws.com:27017/soach',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
-  appId: process.env.APP_ID || 'myAppId',
-  masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
-  serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
+  appId: process.env.APP_ID || '1PakTftNl5Vc7tY6PAmzrBV3SrljjpwZJR3MTv2P',
+  masterKey: process.env.MASTER_KEY || 'Pgv4rRvEyfmxwCDGXxJe2kdbfZO0xjdKtVQA8pOJ', //Add your master key here. Keep it secret!
+  serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed,
+  clientKey: process.env.CLIENT_KEY || 'N4TZF2B4y5bMtU6vj6phDH5PSwjVuPHzHUe44dvY',
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   },
   javascriptKey: process.env.JAVASCRIPT_KEY || "myJavascriptKey"
 });
+
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
 // javascriptKey, restAPIKey, dotNetKey, clientKey
