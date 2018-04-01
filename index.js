@@ -10,6 +10,7 @@ var appId = process.env.APP_ID;
 var masterKey = process.env.MASTER_KEY;
 var serverURL = process.env.SERVER_URL;
 var clientKey = process.env.CLIENT_KEY;
+var restApiKey = process.env.REST_API_KEY;
 
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
@@ -31,6 +32,12 @@ if (!clientKey) {
   console.log('CLIENT_KEY not specified, falling back to localhost.');
 }
 
+if (!restApiKey) {
+  console.log('REST_API_KEY not specified, falling back to localhost.');
+}
+
+
+
 var api = new ParseServer({
   // databaseURI: databaseUri || 'mongodb://social:social@ds125146.mlab.com:25146/social_journalism',
   databaseURI: databaseUri || 'mongodb://soch:soch123@ec2-34-229-101-24.compute-1.amazonaws.com:27017/soach',
@@ -42,7 +49,8 @@ var api = new ParseServer({
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   },
-  javascriptKey: process.env.JAVASCRIPT_KEY || "myJavascriptKey"
+  javascriptKey: process.env.JAVASCRIPT_KEY || "myJavascriptKey",
+  restAPIKey: process.env.REST_API_KEY || 'Yg8cs4vK2hQZp5vw6hVbd4NA2tf53C9xgVq9zDVD'
 });
 
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
